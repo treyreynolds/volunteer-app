@@ -40,7 +40,6 @@ class ApplicationsController extends AppController {
 		$this->loadModel('Country');
 		
 		if ($this->request->is('post')) {			
-			debug($this->request->data);
 			
 			$this->Application->create();
 			if ($this->Application->save($this->request->data)) {
