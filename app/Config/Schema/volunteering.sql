@@ -1,0 +1,71 @@
+CREATE TABLE `user_groups` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `parent_id` int(11) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `users` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(40) NOT NULL DEFAULT '',
+  `email` varchar(255) NOT NULL DEFAULT '',
+  `group_id` int(11) NOT NULL DEFAULT '0',
+  `active` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `group_id` (`group_id`),
+  KEY `users_idx2` (`username`,`password`,`active`),
+  CONSTRAINT `users_ibfk_1` FOREIGN KEY (`group_id`) REFERENCES `user_groups` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `applications` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  # Personal Information
+	`first_name` varchar(30) NOT NULL,
+	`last_name` varchar(30) NOT NULL,
+	`date_of_birth` date DEFAULT NULL,
+	`street_address` varchar(50) NOT NULL,
+	`city` varchar(50) NOT NULL,
+	`postal_code` varchar(10) DEFAULT NULL,
+	`state` varchar(20) DEFAULT NULL,
+	`country` varchar(50) NOT NULL,
+	`home_phone` varchar(20) DEFAULT NULL,
+	`cell_phone` varchar(20) DEFAULT NULL,
+	`gender` char NOT NULL,
+	`email_address` varchar(50) DEFAULT NULL,
+	`length_of_stay` varchar(10) DEFAULT NULL,
+	`intended_start_date` date DEFAULT NULL,
+	`stay_comments` text,
+	`command_of_english` varchar(50) NOT NULL,
+	`educational_qualifications` text,
+	`work_experience` text,
+	`volunteer_experience` text,
+	`other_qualifications` text,
+	`why_gga` text,
+	`area_of_interest` text,
+	`interests_or_hobbies` text,
+	`personal_strengths` text,
+	`personal_weaknesses` text,
+	`religious_beliefs` text,
+	`challenges` text,
+	`valid_passport` tinyint(1) NOT NULL DEFAULT '1',
+	`passport_number` varchar(15) DEFAULT NULL,
+	`reference_1_name` varchar(30) DEFAULT NULL,
+	`reference_1_email` varchar(50) DEFAULT NULL,
+	`reference_1_relationship` varchar(30) DEFAULT NULL,
+	`reference_1_phone` varchar(20) DEFAULT NULL,
+	`reference_2_name` varchar(30) NOT NULL,
+	`reference_2_email` varchar(50) NOT NULL,
+	`reference_2_relationship` varchar(30) NOT NULL,
+	`reference_2_phone` varchar(20) DEFAULT NULL,
+	`applied_with_gga_before` tinyint(1) NOT NULL DEFAULT '0',
+  	`volunteered_with_gga_before` tinyint(1) NOT NULL DEFAULT '0',
+	`user_id` int(10) unsigned DEFAULT '0',
+	`created` datetime DEFAULT NULL,
+	`modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `applicants_users_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
