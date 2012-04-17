@@ -54,10 +54,10 @@ class ApplicationsController extends AppController {
 		
 			$this->Application->create();
 			if ($this->Application->save($this->request->data)) {
-				$this->Session->setFlash(__('The application has been saved'));
+				$this->Session->setFlash(__("The application has been saved"), "default", array(), "success");
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The application could not be saved. Please, try again.'));
+				$this->Session->setFlash(__("The application could not be saved. Please, try again."), "default", array(), "error");
 			}
 		}
 		$users = $this->Application->User->find('list');
@@ -144,10 +144,10 @@ class ApplicationsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Application->create();
 			if ($this->Application->save($this->request->data)) {
-				$this->Session->setFlash(__('The application has been saved'));
+				$this->Session->setFlash(__('The application has been saved'), "default", array(), "success");
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The application could not be saved. Please, try again.'));
+				$this->Session->setFlash(__("The application could not be saved. Please, try again."), "default", array(), "error");
 			}
 		}
 		$users = $this->Application->User->find('list');

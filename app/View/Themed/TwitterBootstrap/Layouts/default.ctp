@@ -55,7 +55,9 @@ $cakeDescription = __d('cake_dev', "God's Golden Acre: Volunteer Portal");
 	<?php echo $this->element('navbar'); ?>
 
     <div class="container">
-		<?php echo $this->Session->flash(); ?>
+		<?php // echo $this->Session->flash(); 
+			echo $this->TwitterBootstrap->flashes(array("closable" => true));
+		?>
 		<?php echo $this->fetch('content'); ?>
 		<hr>
 		<footer>

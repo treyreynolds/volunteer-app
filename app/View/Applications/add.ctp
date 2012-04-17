@@ -170,8 +170,10 @@
 		echo $this->Form->input('applied_with_gga_before');
 		echo $this->Form->input('volunteered_with_gga_before');
 		?>
-		<?php echo $this->Form->end(__('Submit'));?>
-			<div class="form-actions"><a href="#qualifications" class="btn btn-primary btn-large">Submit »</a></div>
+		
+		<div class="form-actions"><?php echo $this->TwitterBootstrap->button("Save", array("style" => "primary", "size" => "large")); ?> &nbsp;<?php echo $this->TwitterBootstrap->button("Submit Application", array("style" => "success", "size" => "large")); ?></a>
+		<?php echo $this->Form->end();?>
+</div>
 		</div>
 	</div><!-- End References Section -->
 	</div>
