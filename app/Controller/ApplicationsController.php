@@ -6,7 +6,8 @@ App::uses('AppController', 'Controller');
  * @property Application $Application
  */
 class ApplicationsController extends AppController {
-
+	 
+	 
 	/**
 	 * helpers
 	 * 
@@ -47,6 +48,8 @@ class ApplicationsController extends AppController {
  * @return void
  */
 	public function add() {
+		$this->loadModel('Country');
+		
 		if ($this->request->is('post')) {			
 		
 			$this->Application->create();
@@ -58,7 +61,8 @@ class ApplicationsController extends AppController {
 			}
 		}
 		$users = $this->Application->User->find('list');
-		$this->set(compact('users'));
+		$countries = array_values($this->Country->find('list'));
+		$this->set(compact('users','countries'));
 	}
 
 /**
