@@ -34,8 +34,10 @@ $cakeDescription = __d('cake_dev', "God's Golden Acre: Volunteer Portal");
 	echo $this->fetch('meta');
 	echo $this->Html->meta('icon');
 
-	echo $this->Html->css('bootstrap');
+	echo $this->Html->css('bootstrap.min');
 	echo $this->Html->css('bootstrap-responsive');
+	echo $this->Html->css('animate');
+	echo $this->Html->css('custom');
 	
 	echo $this->Html->script('https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js');
 	echo $this->fetch('css');
@@ -63,6 +65,7 @@ $cakeDescription = __d('cake_dev', "God's Golden Acre: Volunteer Portal");
 		<footer>
         	<p>&copy; God's Golden Acre 2012</p>
       	</footer>
+      	<?php echo $this->element('login-form'); ?>
     </div> <!-- /container -->
 
     <!-- Le javascript

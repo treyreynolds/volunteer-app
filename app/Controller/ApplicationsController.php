@@ -6,17 +6,6 @@ App::uses('AppController', 'Controller');
  * @property Application $Application
  */
 class ApplicationsController extends AppController {
-	 
-	 
-	/**
-	 * helpers
-	 * 
-	 * (default value: array("Html", "Form", "TwitterBootstrap.TwitterBootstrap"))
-	 * 
-	 * @var string
-	 * @access public
-	 */
-	public $helpers = array("Html", "Form", "TwitterBootstrap.TwitterBootstrap");
 
 /**
  * index method
@@ -51,7 +40,8 @@ class ApplicationsController extends AppController {
 		$this->loadModel('Country');
 		
 		if ($this->request->is('post')) {			
-		
+			debug($this->request->data);
+			
 			$this->Application->create();
 			if ($this->Application->save($this->request->data)) {
 				$this->Session->setFlash(__("The application has been saved"), "default", array(), "success");

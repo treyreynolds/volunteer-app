@@ -12,9 +12,9 @@
           <li class="active"><a href="/">Home</a></li>
           <li><a href="/apply-now">Apply Now</a></li>
           <li><a href="/applications">Finish Saved Application</a></li>
-          <li><a href="/login">Login</a></li>
           <li><a href="/login">Approve Applications</a></li>
           <li><a href="/users">Manage Users</a></li>
+          <li><a class="login-button' href="/login">Login</a></li>          
         </ul>
       </div><!--/.nav-collapse -->
     </div>

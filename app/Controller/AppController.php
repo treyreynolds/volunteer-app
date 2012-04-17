@@ -32,5 +32,25 @@ App::uses('Controller', 'Controller');
  * @link http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+
+	/**
+	 * helpers
+	 * 
+	 * (default value: array("Html", "Form", "TwitterBootstrap.TwitterBootstrap"))
+	 * 
+	 * @var string
+	 * @access public
+	 */
+	public $helpers = array("Html", "Form", "TwitterBootstrap.TwitterBootstrap");
+	
+	
+	/**
+	 * theme
+	 * 
+	 * (default value: 'TwitterBootstrap')
+	 * 
+	 * @var string
+	 * @access public
+	 */
 	public $theme = 'TwitterBootstrap';
 }

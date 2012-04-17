@@ -27,7 +27,7 @@
 				    "div" => array('class'=>'span3')
 				));
 				echo $this->Form->input("date_of_birth", array(
-				    "label" => "<strong>Date of Birth (DD-MM-YYYY)</strong>",
+				    "label" => "<strong>Date of Birth (MM-DD-YYYY)</strong>",
 				    "div" => array('class'=>'span3'),
 				    "type" => "text",
 				    "id" => "dateOfBirth",
