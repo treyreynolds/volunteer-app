@@ -27,7 +27,7 @@
 				    "div" => array('class'=>'span3')
 				));
 				echo $this->Form->input("date_of_birth", array(
-				    "label" => "<strong>Date of Birth (MM-DD-YYYY)</strong>",
+				    "label" => "<strong>Date of Birth</strong>",
 				    "div" => array('class'=>'span3'),
 				    "type" => "text",
 				    "id" => "dateOfBirth",
@@ -41,24 +41,16 @@
 				echo $this->Form->input("street_address", array(
 				    "label" => "Street Address",
 				    "div" => array('class'=>'span3'),
-				    "style" => "width: 250px"
 				)); 
 				echo $this->Form->input('city', array(
 				    "label" => "City",
-				    "div" => array('class'=>'span2'),
-				    "style" => "width: 150px"
+				    "div" => array('class'=>'span3'),
 				));
 				echo $this->Form->input('state', array(
 				    "label" => "State (if applicable)",
-				    "div" => array('class'=>'span2'),
-				    "style" => "width: 150px"
+				    "div" => array('class'=>'span3'),
 				));
 				
-				echo $this->Form->input('postal_code', array(
-				    "label" => "Postal Code",
-				    "div" => array('class'=>'span2'),
-				    "style" => "width: 110px"
-				));
 				?>
 			</div>
 	
@@ -78,7 +70,6 @@
 				echo $this->Form->input('cell_phone', array(
 				    "label" => "Cell Phone",
 				    "div" => array('class'=>'span3'),
-				    "style" => "width: 150px"
 				));
 				
 				?>
@@ -86,19 +77,20 @@
 			
 			<div class="row">
 		<?php
+			echo $this->Form->input('email_address', array(
+					"id" => 'emailAddress',
+				    "label" => "<strong>Email Address</strong>",
+				    "div" => array('class'=>'span3'),
+				    "after" => "<div class='emailSuggestion'></div>"
+				    
+			));
 				
 			echo $this->Form->input('gender', array(
 				    "label" => "<strong>Gender</strong>",
 				    "options" => array('Female'=>'Female','Male'=>'Male'),
 				    "div" => array('class'=>'span3')
 			));
-			
-			echo $this->Form->input('email_address', array(
-				    "label" => "<strong>Email Address</strong>",
-				    "div" => array('class'=>'span3'),
-				    "style" => "width: 250px"
-			));
-		
+					
 		?>
 			</div>
 			<div class="form-actions"><a href="#qualifications" class="btn btn-primary btn-large">Save and Continue »</a></div>
@@ -215,6 +207,35 @@ $(document).ready(function() {
 	  onRestore: function() {},
 	  onRelease: function() {},
 	  excludeFields: null
+ });
+ 
+ var domains = ['yahoo.com', 'google.com', 'hotmail.com', 'gmail.com', 'me.com', 
+ 				'aol.com', 'mac.com', 'live.com', 'comcast.net', 'googlemail.com', 
+ 				'msn.com', 'hotmail.co.uk', 'yahoo.co.uk', 'facebook.com', 'verizon.net', 
+ 				'sbcglobal.net', 'att.net', 'gmx.com','mail.com', 'gmx.de', 'telkomsa.net',
+ 				'web.de', 'google.co.za', 'godsgoldenacre.org'];
+ 				
+ $('#emailAddress').on('blur', function() {
+	$(this).mailcheck({
+		domains: domains,   // optional
+	    suggested: function(element, suggestion) {
+	      console.log(suggestion);
+	      
+	      $('.emailSuggestion').html("<p><small>Did you mean <a class='suggestedEmail' href='#'><em>" + 
+	      						suggestion.full + '</em></a>?</small></p>');
+	    	
+	    	that = this;
+	    	// Pass the value from the email suggestion back to the input
+	    	$('.suggestedEmail').click(function(){
+	    		// $('#emailAddress').value(that.value);
+	    		alert(this);
+	    	});
+	    	},
+	    empty: function(element) {
+	      // callback code
+	      $('.emailSuggestion').html('');
+	    }
+	});
  });
   
 });

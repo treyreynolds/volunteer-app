@@ -40,6 +40,7 @@ $cakeDescription = __d('cake_dev', "God's Golden Acre: Volunteer Portal");
 	echo $this->Html->css('custom');
 	
 	echo $this->Html->script('https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js');
+	echo $this->Html->script('https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js');
 	echo $this->fetch('css');
 	echo $this->fetch('script');
 ?>
@@ -85,7 +86,9 @@ $cakeDescription = __d('cake_dev', "God's Golden Acre: Volunteer Portal");
     echo $this->Html->script('bootstrap-carousel.js');
     echo $this->Html->script('bootstrap-typeahead.js');
     echo $this->Html->script('jquery.maskedinput.min.js');
+    echo $this->Html->script('jquery.mailcheck.min.js');
     echo $this->Html->script('sisyphus.min.js');
+    echo $this->Html->script('login.js');
     ?>
     
 	<?php echo $this->element('sql_dump'); ?>
